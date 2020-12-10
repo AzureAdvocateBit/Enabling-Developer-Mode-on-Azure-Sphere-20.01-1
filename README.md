@@ -1,6 +1,6 @@
 # Enabling Developer Mode on Azure Sphere 20.01
 
-[Azure Sphere Command Line Utility](https://docs.microsoft.com/en-us/azure-sphere/reference/overview#overview-of-azsphere?WT.mc_id=github-blog-dglover)
+[Azure Sphere Command Line Utility](https://docs.microsoft.com/azure-sphere/reference/overview?WT.mc_id=iot-0000-dglover#overview-of-azsphere?WT.mc_id=github-blog-dglover)
 
 Quick write up if you get stuck enabling developer mode on your Azure Sphere after updating to 20.01 Retail Eval feed. 
 
@@ -44,7 +44,7 @@ Follow this guide.
 
 ## Step 1: Clear any previously selected device capability configuration
 
-[azsphere device commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-device?WT.mc_id=github-blog-dglover)
+[azsphere device commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-device?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere dev cap select -n
@@ -54,7 +54,7 @@ azsphere dev cap select -n
 
 ## Step 2: Create a Device Group with OSFeedType RetailEval and an App update
 
-[azsphere device group commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-device-group?WT.mc_id=github-blog-dglover)
+[azsphere device group commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-device-group?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere dg create -n Test1 -a On -o RetailEval -pn MyProduct
@@ -70,7 +70,7 @@ From the **Azure Sphere Command Line**, change to your application **out** folde
 
 Run the following command, be sure to change the *--input* to match your approot directory name, set the *--output* file to match your needs.
 
-[azsphere image-package commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-image-package?WT.mc_id=github-blog-dglover)
+[azsphere image-package commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-image-package?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere image-package pack-application --input approotAzureSphereIoTCentral --output glovebox.imagepackage
@@ -78,7 +78,7 @@ azsphere image-package pack-application --input approotAzureSphereIoTCentral --o
 
 ### Upload the application package
 
-[azsphere image commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-image?WT.mc_id=github-blog-dglover)
+[azsphere image commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-image?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere image add --filepath glovebox.imagepackage --temporary --force
@@ -100,7 +100,7 @@ Successfully uploaded image with ID 'f999999-84f1-9999-aa71-b70cf159999' and nam
 
 ### Add the App Package to the Device Group you created
 
-[azsphere device-group commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-device-group?WT.mc_id=github-blog-dglover)
+[azsphere device-group commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-device-group?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere device-group deployment create -ii  99999999-84f1-9999-aa71-b70c999999 -dgn Test1
@@ -110,7 +110,7 @@ azsphere device-group deployment create -ii  99999999-84f1-9999-aa71-b70c999999 
 
 ## Step 4: Move the the Attached Device to the newly create Device Group
 
-[azsphere device commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-device?WT.mc_id=github-blog-dglover)
+[azsphere device commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-device?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere dev update -pn MyProduct -dgn "Test1"
@@ -120,7 +120,7 @@ azsphere dev update -pn MyProduct -dgn "Test1"
 
 ## Step 5: Ensure your Device is Wifi Connected
 
-[azsphere device commands](https://docs.microsoft.com/en-us/azure-sphere/reference/azsphere-device?WT.mc_id=github-blog-dglover)
+[azsphere device commands](https://docs.microsoft.com/azure-sphere/reference/azsphere-device?WT.mc_id=iot-0000-dglover)
 
 ```bash
 azsphere dev wifi show-status
